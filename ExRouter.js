@@ -102,8 +102,15 @@ export class ExRouteAdapter {
         if (this.route.props.onLeft && this.route.props.leftTitle) {
             return (<TouchableOpacity
               touchRetentionOffset={ExNavigator.Styles.barButtonTouchRetentionOffset}
-              onPress={() => this.route.props.onLeft({...this.route.props, ...this.props})}
+              onPress={() => this.route.props.onLeft({...this.props})}
               style={[ExNavigator.Styles.barLeftButton, this.route.props.leftButtonStyle]}>
+                <BackIcon
+                  style={[
+                    ExNavigatorStyles.barButtonIcon,
+                    navigator.props.barButtonIconStyle,
+                    this.route.props.barButtonIconStyle,
+                  ]}
+                />
                 <Text
                   style={[ExNavigator.Styles.barLeftButtonText, this.route.props.leftButtonTextStyle]}>{this.route.props.leftTitle}</Text>
             </TouchableOpacity>);
