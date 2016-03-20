@@ -150,6 +150,14 @@ class Actions {
             router.delegate.props.dispatch({...props, type: BEFORE_POP, route:router.currentRoute, name:router.currentRoute.name})
         }
         if (router.pop(num, props)){
+          /**
+           * Route back down to bottom of this router, i.e., restore it to the
+           * state it would've been in before the push.  Important for TabBars.
+           */
+            while (router.currentRoute.childRouter){
+                router = router.currentRoute.childRouter;
+                debug("Switching to child router="+router.name);
+            }
             if (!parentRouter)
                 this.currentRouter = router;
             if (router.delegate.props && router.delegate.props.dispatch){
