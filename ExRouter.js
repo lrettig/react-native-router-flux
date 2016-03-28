@@ -173,6 +173,13 @@ export class ExRouteAdapter {
         }
     }
 }
+
+/**
+ * For some reason I don't understand, if I don't subclass NavigationBar here
+ * but instead just try to render it, passing in props, the nav buttons get
+ * screwed up.  I tried everything.  So I cannot find a way to wrap this in
+ * a view with pointerEvents.
+ */
 class ExNavigationBar extends Navigator.NavigationBar {
     constructor(props){
         super(props);
@@ -364,6 +371,7 @@ export default class ExRouter extends React.Component {
                         style={styles.transparent}
                         sceneStyle={{ paddingTop: 0, backgroundColor:'transparent' }}
                         {...this.props}
+                        // Also tried wrapping it here, this also fails.
                         renderNavigationBar={props=><ExNavigationBar {...this.props} {...props} {...this.state} router={router}/>}
                     />
                     {footer}
