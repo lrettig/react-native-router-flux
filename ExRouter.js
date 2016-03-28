@@ -13,7 +13,7 @@ import debug from './debug';
 import ActionSheet from '@exponent/react-native-action-sheet';
 
 function parentProps(props = {}){
-    const {name, sceneConfig, title, children, router, initial, showNavigationBar, renderNavigationBar, hideNavBar, footer, header, ...routerProps} = props;
+    const {name, sceneConfig, title, children, router, initial, showNavigationBar, renderNavigationBar, renderLeftButton, renderRightButton, hideNavBar, footer, header, ...routerProps} = props;
     return routerProps;
 
 }
